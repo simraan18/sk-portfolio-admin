@@ -27,7 +27,7 @@ const LeftNavigationPanel = ({ navigations }: LeftNavigationPanelProps) => {
         onClick={togglePanel}
         aria-label={isOpen ? "Close navigation panel" : "Open navigation panel"}
         aria-expanded={isOpen}
-        className="fixed left-4 top-4 z-40 p-2 text-copy-secondary hover:text-copy-primary transition-colors"
+        className="z-40 p-2 text-copy-secondary hover:text-copy-primary transition-colors"
       >
         {isOpen ? (
           <PanelRightOpen className="h-5 w-5" />
@@ -38,11 +38,13 @@ const LeftNavigationPanel = ({ navigations }: LeftNavigationPanelProps) => {
 
       {/* Navigation Panel Overlay */}
       <div
-        className={cn("absolute inset-0", { "bg-black/30": isOpen })}
+        className={cn("absolute inset-0 invisible", {
+          "bg-black/30 visible": isOpen,
+        })}
         onClick={handleHideSidePanel}
       >
         <nav
-          className={`${cn("fixed left-0 w-[30%] top-0 h-screen  bg-surface border-r border-surface-border z-30  -translate-x-100 transition-all duration-400", { "translate-x-0": isOpen })}`}
+          className={`${cn("fixed left-0 w-75 top-0 h-screen  bg-surface border-r border-surface-border z-30")}`}
           role="navigation"
           aria-label="Main navigation"
         >

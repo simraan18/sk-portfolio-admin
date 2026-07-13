@@ -5,4 +5,5 @@ export const routePath = {
   cardCategoy: "/card-category",
   card: "/card",
   socialLinks: "/social-link",
-};
+  profileCreate: "/profile-create",
+} as const;

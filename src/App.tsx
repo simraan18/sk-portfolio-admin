@@ -1,11 +1,10 @@
-import LeftNavigationPanel from "./components/LeftNavigationPanel";
 import MainContent from "./components/MainContent";
-import { sidePanel } from "./routes/navigation";
+import Toolbar from "./components/Toolbar";
 
 const App = () => {
   return (
-    <div className="flex">
-      <LeftNavigationPanel navigations={sidePanel} />
+    <div className="flex flex-col">
+      <Toolbar />
       <MainContent />
     </div>
   );
