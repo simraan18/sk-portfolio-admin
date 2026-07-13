@@ -1,6 +1,4 @@
-import React from "react";
-
-interface ListPageProps {}
+// interface ListPageProps {}
 
 const ListPage = () => {
   return <div>ListPage</div>;
