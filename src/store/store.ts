@@ -1,14 +1,45 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { portfolioApi } from "./service/portfolioApi";
+import { profileApi } from "./service/profileApi";
+import { authSlice } from "./slice/auth-slice";
+import storage from "redux-persist/es/storage";
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
+import { authApi } from "./service/authApi";
+
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["auth"],
+};
+
+const rootReducer = combineReducers({
+  [profileApi.reducerPath]: profileApi.reducer,
+  [authApi.reducerPath]: authApi.reducer,
+  auth: authSlice.reducer,
+});
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: {
-    [portfolioApi.reducerPath]: portfolioApi.reducer,
-  },
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(portfolioApi.middleware),
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }).concat(profileApi.middleware, authApi.middleware),
 });
+
+export const persistor = persistStore(store);
 
 setupListeners(store.dispatch);
 

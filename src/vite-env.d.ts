@@ -8,3 +8,27 @@ interface IAppNavigation {
   path: string;
   icon: LucideIcon;
 }
+
+interface AdminBaseEntity {
+  id: string;
+}
+
+interface ResponseData<T> {
+  requestId: string;
+  response: T;
+  statusCode: number;
+  timestamp: string;
+}
+
+interface ErrorData {
+  success: boolean;
+  statusCode: number;
+  path: string;
+  timestamp: string;
+  message: string;
+}
+
+interface ApiErrorResponse {
+  data: ErrorData;
+  status: number;
+}

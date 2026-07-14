@@ -6,4 +6,6 @@ export const routePath = {
   card: "/card",
   socialLinks: "/social-link",
   profileCreate: "/profile-create",
+  updateProfile: "/update-profile/:id",
+  login: "/login",
 } as const;
