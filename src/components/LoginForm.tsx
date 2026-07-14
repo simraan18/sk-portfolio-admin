@@ -17,9 +17,10 @@ import { toast } from "sonner";
 import type { ApiErrorResponse } from "@/vite-env";
 import { useState } from "react";
 import { useAppDispatch } from "@/store/hooks";
-import { setAuthState, setToken } from "@/store/slice/auth-slice";
-import { useNavigate } from "react-router";
+import { selectAuth, setAuthState, setToken } from "@/store/slice/auth-slice";
+import { Navigate, useNavigate } from "react-router";
 import { routePath } from "@/routes/route-path";
+import { useSelector } from "react-redux";
 
 const LoginForm = () => {
   const [signIn] = useSignInMutation();
@@ -34,6 +35,7 @@ const LoginForm = () => {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { token } = useSelector(selectAuth);
 
   const [loading, setLoading] = useState(false);
 
@@ -54,6 +56,10 @@ const LoginForm = () => {
     }
     setLoading(false);
   };
+
+  if (token) {
+    return <Navigate to={routePath.home} />;
+  }
 
   return (
     <div className="flex items-center justify-center w-full sm:w-125">
