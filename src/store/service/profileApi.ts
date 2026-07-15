@@ -9,6 +9,7 @@ export const profileApi = createApi({
   tagTypes: ["Profile"],
   endpoints: (builder) => ({
     getProfile: builder.query<ResponseData<Profile>, void>({
+      providesTags: ["Profile"],
       query: () => "/profile",
     }),
     addProfile: builder.mutation({
@@ -19,7 +20,23 @@ export const profileApi = createApi({
       }),
       invalidatesTags: ["Profile"],
     }),
+    updateProfile: builder.mutation<
+      ResponseData<Profile>,
+      { id: string; payload: any },
+      ResponseData<Profile>
+    >({
+      query: ({ id, payload }) => ({
+        url: `/profile/${id}`,
+        method: "PUT",
+        body: payload,
+      }),
+      invalidatesTags: ["Profile"],
+    }),
   }),
 });
 
-export const { useGetProfileQuery } = profileApi;
+export const {
+  useGetProfileQuery,
+  useLazyGetProfileQuery,
+  useUpdateProfileMutation,
+} = profileApi;

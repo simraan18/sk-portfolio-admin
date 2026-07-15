@@ -13,14 +13,13 @@ import {
 } from "@/components/ui/card";
 import { Button } from "./ui/button";
 import { useSignInMutation } from "@/store/service/authApi";
-import { toast } from "sonner";
-import type { ApiErrorResponse } from "@/vite-env";
 import { useState } from "react";
 import { useAppDispatch } from "@/store/hooks";
 import { selectAuth, setAuthState, setToken } from "@/store/slice/auth-slice";
 import { Navigate, useNavigate } from "react-router";
 import { routePath } from "@/routes/route-path";
 import { useSelector } from "react-redux";
+import { apiError } from "@/utils";
 
 const LoginForm = () => {
   const [signIn] = useSignInMutation();
@@ -50,9 +49,7 @@ const LoginForm = () => {
       dispatch(setToken(data.response.access_token));
       navigate(routePath.home);
     } catch (error) {
-      const message =
-        (error as ApiErrorResponse)?.data?.message ?? "Something went wrong!";
-      toast.error(message);
+      apiError(error);
     }
     setLoading(false);
   };

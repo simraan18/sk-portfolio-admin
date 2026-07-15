@@ -29,7 +29,7 @@ const PageTitle = ({
         <p className="text-muted-foreground text-sm">{description}</p>
         {backPath ? (
           <Link to={backPath} className="cursor-pointer">
-            <div className="flex items-center gap-1 text-muted-foreground text-sm">
+            <div className="flex items-center gap-1 text-primary text-sm">
               <ArrowLeft size={12} />
               <span>Back</span>
             </div>
