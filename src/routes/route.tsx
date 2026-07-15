@@ -3,6 +3,7 @@ import PageNotFound from "@/page/not-found";
 import { createBrowserRouter } from "react-router";
 import { routePath } from "./route-path";
 import { lazy } from "react";
+import ErrorPage from "@/components/ErrorPage";
 
 const HomePage = lazy(() => import("@/page/Home"));
 const ProfileListPage = lazy(() => import("@/page/Profile/ProfileList"));
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
       { path: routePath.updateProfile, Component: ProfileUpdatePage },
       { path: routePath.profileCreate, Component: ProfileCreatePage },
     ],
-    errorElement: <PageNotFound />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "*",
+    Component: PageNotFound,
   },
 ]);
