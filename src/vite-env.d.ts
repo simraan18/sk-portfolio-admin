@@ -25,7 +25,7 @@ interface ErrorData {
   statusCode: number;
   path: string;
   timestamp: string;
-  message: string;
+  message: string | string[];
 }
 
 interface ApiErrorResponse {
