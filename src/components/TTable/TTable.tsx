@@ -37,6 +37,9 @@ const TTable = <T extends Object>({
       .addActionBtns(updatePath, deleteUrl)
       .build(),
     getCoreRowModel: getCoreRowModel(),
+    getRowId(originalRow) {
+      return (originalRow as any).id;
+    },
     ...rest,
   });
 

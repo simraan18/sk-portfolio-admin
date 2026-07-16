@@ -86,11 +86,11 @@ export const columns: ColumnDef<Profile>[] = [
     header: "Roles",
     cell: ({ row }) => {
       return (
-        <>
+        <div className="flex gap-1">
           {row.original["roles"].map((role) => (
             <Badge variant={"outline"}>{role}</Badge>
           ))}
-        </>
+        </div>
       );
     },
   },
@@ -100,11 +100,11 @@ export const columns: ColumnDef<Profile>[] = [
     header: "Top Skills",
     cell: ({ row }) => {
       return (
-        <>
+        <div className="flex gap-1">
           {row.original["topSkills"].map((skill) => (
             <Badge variant={"outline"}>{skill}</Badge>
           ))}
-        </>
+        </div>
       );
     },
   },

@@ -32,3 +32,10 @@ interface ApiErrorResponse {
   data: ErrorData;
   status: number;
 }
+
+interface ResponseDataList<T> {
+  requestId: string;
+  response: { data: T[]; total: number };
+  statusCode: number;
+  timestamp: string;
+}

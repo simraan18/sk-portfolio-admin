@@ -14,6 +14,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import { authApi } from "./service/authApi";
+import { experienceApi } from "./service/experienceApi";
 
 const persistConfig = {
   key: "root",
@@ -24,6 +25,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   [profileApi.reducerPath]: profileApi.reducer,
   [authApi.reducerPath]: authApi.reducer,
+  [experienceApi.reducerPath]: experienceApi.reducer,
   auth: authSlice.reducer,
 });
 
@@ -36,7 +38,11 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(profileApi.middleware, authApi.middleware),
+    }).concat(
+      profileApi.middleware,
+      authApi.middleware,
+      experienceApi.middleware,
+    ),
 });
 
 export const persistor = persistStore(store);

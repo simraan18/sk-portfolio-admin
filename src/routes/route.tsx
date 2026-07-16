@@ -6,10 +6,22 @@ import { lazy } from "react";
 import ErrorPage from "@/components/ErrorPage";
 
 const HomePage = lazy(() => import("@/page/Home"));
+
 const ProfileListPage = lazy(() => import("@/page/Profile/ProfileList"));
 const ProfileUpdatePage = lazy(() => import("@/page/Profile/ProfileUpdate"));
 const ProfileCreatePage = lazy(() => import("@/page/Profile/ProfileCreate"));
+
 const LoginPage = lazy(() => import("@/page/LoginPage"));
+
+const ExperienceListPage = lazy(
+  () => import("@/page/Experience/ExperienceListPage"),
+);
+const ExperienceUpdatePage = lazy(
+  () => import("@/page/Experience/ExperienceUpdatePage"),
+);
+const ExperienceCreatePage = lazy(
+  () => import("@/page/Experience/ExperienceCreatePage"),
+);
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +35,9 @@ export const router = createBrowserRouter([
       { path: routePath.profile, Component: ProfileListPage },
       { path: routePath.updateProfile, Component: ProfileUpdatePage },
       { path: routePath.profileCreate, Component: ProfileCreatePage },
+      { path: routePath.experience, Component: ExperienceListPage },
+      { path: routePath.experienceCreate, Component: ExperienceCreatePage },
+      { path: routePath.experienceUpdate, Component: ExperienceUpdatePage },
     ],
     errorElement: <ErrorPage />,
   },
