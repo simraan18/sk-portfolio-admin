@@ -1,6 +1,7 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import type { ReactNode } from "react";
 import { Link } from "react-router";
+import { v4 as uuidv4 } from "uuid";
 
 export function buildCustomTableColumns<T>(columns: ColumnDef<T>[]) {
   return {
@@ -33,6 +34,7 @@ export function buildCustomTableColumns<T>(columns: ColumnDef<T>[]) {
               <Link
                 to={`${updatePath.replace(":id", entityId)}`}
                 className="text-primary"
+                key={uuidv4()}
               >
                 Update
               </Link>,

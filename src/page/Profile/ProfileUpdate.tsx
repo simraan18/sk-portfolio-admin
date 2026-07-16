@@ -4,7 +4,6 @@ import {
   Field,
   FieldContent,
   FieldError,
-  FieldGroup,
   FieldLabel,
 } from "@/components/ui/field";
 import Pagelayout from "@/layout/Pagelayout";
@@ -27,6 +26,7 @@ import { useNavigate } from "react-router";
 import { toast } from "sonner";
 import { routePath } from "@/routes/route-path";
 import { apiError } from "@/utils";
+import FormLayout from "@/layout/FormLayout";
 
 const ProfileUpdate = () => {
   // Hooks
@@ -139,7 +139,7 @@ const ProfileUpdate = () => {
       <div className="flex flex-col gap-4">
         <PageTitle title="Profile Update" backPath="/profile" />
         <form id="profile-update-form" onSubmit={form.handleSubmit(onSubmit)}>
-          <FieldGroup className="grid sm:grid-cols-2  gap-4">
+          <FormLayout className="grid sm:grid-cols-2  gap-4">
             {ProfileFormFields(form)}
             <FieldLabel className="col-span-full">Top Skills</FieldLabel>
             <InputGroup className="col-span-full sm:w-1/2">
@@ -245,7 +245,7 @@ const ProfileUpdate = () => {
               isLoading={isLoading}
               cancel
             />
-          </FieldGroup>
+          </FormLayout>
         </form>
       </div>
     </Pagelayout>

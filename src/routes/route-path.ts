@@ -8,4 +8,6 @@ export const routePath = {
   profileCreate: "/profile-create",
   updateProfile: "/update-profile/:id",
   login: "/login",
+  experienceCreate: "/experience-create",
+  experienceUpdate: "/experience-update/:id",
 } as const;
