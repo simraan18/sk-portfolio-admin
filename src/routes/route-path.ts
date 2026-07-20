@@ -12,4 +12,6 @@ export const routePath = {
   experienceUpdate: "/experience-update/:id",
   cardCategoryCreate: "/card-category-create",
   cardCategoryUpdate: "/card-category-update/:id",
+  cardCreate: "/card-create",
+  cardUpdate: "/card-update/:id",
 } as const;
