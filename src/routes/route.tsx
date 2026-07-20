@@ -23,6 +23,16 @@ const ExperienceCreatePage = lazy(
   () => import("@/page/Experience/ExperienceCreatePage"),
 );
 
+const CardCategoryPage = lazy(
+  () => import("@/page/CardCategory/CardCategoryPage"),
+);
+const CardCategoryUpdatePage = lazy(
+  () => import("@/page/CardCategory/CardCategoryUpdatePage"),
+);
+const CardCategoryCreatePage = lazy(
+  () => import("@/page/CardCategory/CardCategoryCreatePage"),
+);
+
 export const router = createBrowserRouter([
   {
     Component: LoginPage,
@@ -38,6 +48,9 @@ export const router = createBrowserRouter([
       { path: routePath.experience, Component: ExperienceListPage },
       { path: routePath.experienceCreate, Component: ExperienceCreatePage },
       { path: routePath.experienceUpdate, Component: ExperienceUpdatePage },
+      { path: routePath.cardCategoy, Component: CardCategoryPage },
+      { path: routePath.cardCategoryCreate, Component: CardCategoryCreatePage },
+      { path: routePath.cardCategoryUpdate, Component: CardCategoryUpdatePage },
     ],
     errorElement: <ErrorPage />,
   },

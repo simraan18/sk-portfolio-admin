@@ -21,19 +21,17 @@ const ProfileList = () => {
   if (isFetching) return <Loading />;
 
   return (
-    <Pagelayout>
-      <div className="flex flex-col gap-4">
-        <PageTitle
-          title="Profile"
-          description="Manage portfolio profile section."
-          // createPath="/profile-create"
-        />
-        <TTable
-          data={profileData ? [profileData.response] : []}
-          columns={columns}
-          updatePath={routePath.updateProfile}
-        />
-      </div>
+    <Pagelayout className="flex flex-col gap-4">
+      <PageTitle
+        title="Profile"
+        description="Manage portfolio profile section."
+        createPath={profileData?.response ? undefined : routePath.profileCreate}
+      />
+      <TTable
+        data={profileData?.response ? [profileData.response] : []}
+        columns={columns}
+        updatePath={routePath.updateProfile}
+      />
     </Pagelayout>
   );
 };

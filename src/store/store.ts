@@ -15,6 +15,7 @@ import {
 } from "redux-persist";
 import { authApi } from "./service/authApi";
 import { experienceApi } from "./service/experienceApi";
+import { cardCategoryApi } from "./service/cardCategoryApi";
 
 const persistConfig = {
   key: "root",
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   [profileApi.reducerPath]: profileApi.reducer,
   [authApi.reducerPath]: authApi.reducer,
   [experienceApi.reducerPath]: experienceApi.reducer,
+  [cardCategoryApi.reducerPath]: cardCategoryApi.reducer,
   auth: authSlice.reducer,
 });
 
@@ -42,6 +44,7 @@ export const store = configureStore({
       profileApi.middleware,
       authApi.middleware,
       experienceApi.middleware,
+      cardCategoryApi.middleware,
     ),
 });
 

@@ -38,7 +38,7 @@ const PageTitle = ({
       </div>
       {createPath ? (
         <Link to={createPath} className="cursor-pointer">
-          <Button className="uppercase text-[12px]! font-semibold">
+          <Button className="uppercase text-[12px]! font-semibold cursor-pointer">
             <Plus size={12} />
             <span>{`Create a ${title}`}</span>
           </Button>
