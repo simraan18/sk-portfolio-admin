@@ -1,6 +1,7 @@
 import { cn } from "@/utils";
 import { Button } from "./ui/button";
 import { useNavigate } from "react-router";
+import { Spinner } from "./ui/spinner";
 
 interface FormSubmitButtonsProps {
   formElementId?: string;
@@ -25,19 +26,30 @@ const FormSubmitButtons = ({
 
   return (
     <div className={cn("flex items-center justify-end gap-3", className)}>
-      <Button type="submit" form={formElementId} disabled={isLoading}>
-        {submitBtnText}
+      <Button
+        type="submit"
+        form={formElementId}
+        disabled={isLoading}
+        className="cursor-pointer"
+      >
+        {isLoading ? <Spinner /> : submitBtnText}
       </Button>
       <Button
         type="button"
         variant={"secondary"}
         onClick={onReset}
         disabled={isLoading}
+        className="cursor-pointer"
       >
         {resetBtnText}
       </Button>
       {cancel ? (
-        <Button type="button" onClick={() => navigate(-1)} variant={"outline"}>
+        <Button
+          type="button"
+          onClick={() => navigate(-1)}
+          variant={"outline"}
+          className="cursor-pointer"
+        >
           Cancel
         </Button>
       ) : null}

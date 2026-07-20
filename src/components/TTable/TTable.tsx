@@ -15,11 +15,14 @@ import {
 } from "@/components/ui/table";
 import { buildCustomTableColumns } from "./BuildCustomColumns";
 import type { routePath } from "@/routes/route-path";
+import { Button } from "../ui/button";
+import { RotateCcw } from "lucide-react";
 
 interface TTableProps<T> extends Omit<TableOptions<T>, "getCoreRowModel"> {
   className?: string;
   updatePath?: (typeof routePath)[keyof typeof routePath];
   deleteUrl?: string;
+  onRefresh?: () => void;
 }
 
 const TTable = <T extends Object>({
@@ -28,6 +31,7 @@ const TTable = <T extends Object>({
   className,
   updatePath,
   deleteUrl,
+  onRefresh,
   ...rest
 }: TTableProps<T>) => {
   const table = useReactTable({
@@ -45,7 +49,18 @@ const TTable = <T extends Object>({
 
   return (
     <>
-      <div className={cn("overflow-hidden rounded-md border", className)}>
+      {onRefresh && (
+        <Button
+          type="button"
+          variant={"link"}
+          onClick={onRefresh}
+          className="cursor-pointer self-end no-underline! text-sm!"
+        >
+          <RotateCcw />
+          <span>Refresh</span>
+        </Button>
+      )}
+      <div className={cn("coloverflow-hidden rounded-md border", className)}>
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

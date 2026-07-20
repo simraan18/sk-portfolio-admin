@@ -10,4 +10,6 @@ export const routePath = {
   login: "/login",
   experienceCreate: "/experience-create",
   experienceUpdate: "/experience-update/:id",
+  cardCategoryCreate: "/card-category-create",
+  cardCategoryUpdate: "/card-category-update/:id",
 } as const;
