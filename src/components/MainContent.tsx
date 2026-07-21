@@ -4,7 +4,7 @@ type MainContentProps = Record<string, never>;
 
 const MainContent = ({}: MainContentProps) => {
   return (
-    <main className="h-screen w-full bg-base overflow-hidden">
+    <main className="h-screen w-full bg-base overflow-x-hidden">
       <Outlet />
     </main>
   );
