@@ -1,12 +1,14 @@
 import { useSelector } from "react-redux";
 import MainContent from "./components/MainContent";
-import Toolbar from "./components/Toolbar";
 import { selectAuth, setAuthState, setToken } from "./store/slice/auth-slice";
 import { useAppDispatch } from "./store/hooks";
 import { useEffect } from "react";
 import { Navigate, useNavigate } from "react-router";
 import { routePath } from "./routes/route-path";
 import Loading from "./components/Loading";
+import { SidebarProvider, SidebarTrigger } from "./components/ui/sidebar";
+import AppSidebar from "./components/AppSidebar";
+import { sidePanel } from "./routes/navigation";
 
 const App = () => {
   const { token, authState } = useSelector(selectAuth);
@@ -38,8 +40,11 @@ const App = () => {
 
   return (
     <div className="flex flex-col">
-      <Toolbar />
-      <MainContent />
+      <SidebarProvider>
+        <AppSidebar navigations={sidePanel} />
+        <SidebarTrigger className="m-5" />
+        <MainContent />
+      </SidebarProvider>
     </div>
   );
 };

@@ -11,7 +11,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "./ui/button";
 import { useSignInMutation } from "@/store/service/authApi";
 import { useState } from "react";
 import { useAppDispatch } from "@/store/hooks";
@@ -20,6 +19,7 @@ import { Navigate, useNavigate } from "react-router";
 import { routePath } from "@/routes/route-path";
 import { useSelector } from "react-redux";
 import { apiError } from "@/utils";
+import FormSubmitButtons from "./FormSubmitButtons";
 
 const LoginForm = () => {
   const [signIn] = useSignInMutation();
@@ -78,20 +78,11 @@ const LoginForm = () => {
         </CardContent>
         <CardFooter>
           <Field orientation="horizontal">
-            <Button
-              type="submit"
-              form="sk-porfolio-login-form"
-              disabled={loading}
-            >
-              Submit
-            </Button>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => form.reset()}
-            >
-              Reset
-            </Button>
+            <FormSubmitButtons
+              isLoading={loading}
+              onReset={() => form.reset()}
+              formElementId="sk-porfolio-login-form"
+            />
           </Field>
         </CardFooter>
       </Card>

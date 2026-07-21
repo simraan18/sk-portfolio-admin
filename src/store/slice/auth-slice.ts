@@ -22,7 +22,7 @@ export const authSlice = createSlice({
       state.authState = action.payload;
     },
 
-    setToken(state, action: PayloadAction<string>) {
+    setToken(state, action: PayloadAction<string | null>) {
       state.token = action.payload;
     },
   }),

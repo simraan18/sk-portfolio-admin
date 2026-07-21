@@ -8,9 +8,7 @@ const Pagelayout = ({
   className?: string;
 }) => {
   return (
-    <div className={cn("px-7 py-5 max-w-5xl mx-auto pb-15", className)}>
-      {children}
-    </div>
+    <div className={cn("px-7 py-5 mx-auto pb-15", className)}>{children}</div>
   );
 };
 

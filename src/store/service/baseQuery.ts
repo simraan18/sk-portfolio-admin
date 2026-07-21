@@ -15,7 +15,7 @@ export const baseQuery: BaseQueryFn = fetchBaseQuery({
     return headers;
   },
   async responseHandler(response) {
-    if (response.status === 403) {
+    if (response.status === 403 || response.status === 401) {
       toast.warning("Unauthorized");
       localStorage.clear();
       window.location.href = routePath.login;

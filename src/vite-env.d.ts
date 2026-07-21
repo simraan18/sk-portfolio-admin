@@ -39,3 +39,8 @@ interface ResponseDataList<T> {
   statusCode: number;
   timestamp: string;
 }
+
+interface AppUser extends AdminBaseEntity {
+  email: string;
+  name: string;
+}
