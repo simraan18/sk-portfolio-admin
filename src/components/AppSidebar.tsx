@@ -31,9 +31,10 @@ import { routePath } from "@/routes/route-path";
 import { apiError } from "@/utils";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { setAuthState, setToken } from "@/store/slice/auth-slice";
-import type { IAppNavigation } from "@/vite-env";
+import type { ISidebar } from "@/vite-env";
+import { sidePanelKeys } from "@/routes/navigation";
 
-const AppSidebar = ({ navigations }: { navigations: IAppNavigation[] }) => {
+const AppSidebar = ({ sidePanel }: { sidePanel: ISidebar }) => {
   const selectUser = authApi.endpoints.getUser.select();
   const { data: userCacheData } = useAppSelector(selectUser);
   const { data: userData } = useGetUserQuery(undefined, {
@@ -74,23 +75,27 @@ const AppSidebar = ({ navigations }: { navigations: IAppNavigation[] }) => {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Content Entity</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {navigations.map(({ icon: Icon, id, label, path }) => (
-                <Link key={id} to={path}>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton className="cursor-pointer">
-                      <Icon />
-                      {label}
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                </Link>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+        {sidePanelKeys.map((key) => (
+          <SidebarGroup key={key}>
+            <SidebarGroupLabel>{sidePanel[key].label}</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {sidePanel[key].navigations.map(
+                  ({ icon: Icon, id, label, path }) => (
+                    <Link key={id} to={path}>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton className="cursor-pointer">
+                          <Icon />
+                          {label}
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    </Link>
+                  ),
+                )}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        ))}
       </SidebarContent>
       {user ? (
         <SidebarFooter>

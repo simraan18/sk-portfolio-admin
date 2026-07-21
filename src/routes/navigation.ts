@@ -1,4 +1,4 @@
-import type { IAppNavigation } from "@/vite-env";
+import type { ISidebar } from "@/vite-env";
 import { v4 as uuidv4 } from "uuid";
 import { routePath } from "./route-path";
 import {
@@ -10,41 +10,53 @@ import {
   WalletCards,
 } from "lucide-react";
 
-export const sidePanel: IAppNavigation[] = [
-  {
-    id: uuidv4(),
-    path: routePath.home,
+export const sidePanelKeys = ["home", "entity"];
+
+export const sidePanel: ISidebar = {
+  home: {
     label: "Home",
-    icon: House,
+    navigations: [
+      {
+        id: uuidv4(),
+        path: routePath.home,
+        label: "Home",
+        icon: House,
+      },
+    ],
   },
-  {
-    id: uuidv4(),
-    path: routePath.profile,
-    label: "Profile",
-    icon: UserRoundPen,
+  entity: {
+    label: "Content Entity",
+    navigations: [
+      {
+        id: uuidv4(),
+        path: routePath.profile,
+        label: "Profile",
+        icon: UserRoundPen,
+      },
+      {
+        id: uuidv4(),
+        path: routePath.experience,
+        label: "Experience",
+        icon: BriefcaseBusiness,
+      },
+      {
+        id: uuidv4(),
+        path: routePath.cardCategoy,
+        label: "Card Category",
+        icon: Boxes,
+      },
+      {
+        id: uuidv4(),
+        path: routePath.card,
+        label: "Card",
+        icon: WalletCards,
+      },
+      {
+        id: uuidv4(),
+        path: routePath.socialLinks,
+        label: "Social Links",
+        icon: MessageCircle,
+      },
+    ],
   },
-  {
-    id: uuidv4(),
-    path: routePath.experience,
-    label: "Experience",
-    icon: BriefcaseBusiness,
-  },
-  {
-    id: uuidv4(),
-    path: routePath.cardCategoy,
-    label: "Card Category",
-    icon: Boxes,
-  },
-  {
-    id: uuidv4(),
-    path: routePath.card,
-    label: "Card",
-    icon: WalletCards,
-  },
-  {
-    id: uuidv4(),
-    path: routePath.socialLinks,
-    label: "Social Links",
-    icon: MessageCircle,
-  },
-];
+};

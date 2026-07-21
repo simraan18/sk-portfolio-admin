@@ -41,7 +41,7 @@ const App = () => {
   return (
     <div className="flex flex-col">
       <SidebarProvider>
-        <AppSidebar navigations={sidePanel} />
+        <AppSidebar sidePanel={sidePanel} />
         <SidebarTrigger className="m-5" />
         <MainContent />
       </SidebarProvider>

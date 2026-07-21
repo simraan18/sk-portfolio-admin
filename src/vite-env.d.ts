@@ -1,6 +1,7 @@
 /// <reference types="vite/client" />
 
 import type { LucideIcon } from "lucide-react";
+import type { sidePanelKeys } from "./routes/navigation";
 
 interface IAppNavigation {
   id: string;
@@ -43,4 +44,11 @@ interface ResponseDataList<T> {
 interface AppUser extends AdminBaseEntity {
   email: string;
   name: string;
+}
+
+interface ISidebar {
+  [key: string]: {
+    label: string;
+    navigations: IAppNavigation[];
+  };
 }
