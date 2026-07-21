@@ -1,5 +1,3 @@
-import { sidePanel } from "@/routes/navigation";
-import LeftNavigationPanel from "./LeftNavigationPanel";
 import { Button } from "./ui/button";
 import { Bell, User } from "lucide-react";
 import { Link } from "react-router";
