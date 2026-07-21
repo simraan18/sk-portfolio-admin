@@ -14,4 +14,6 @@ export const routePath = {
   cardCategoryUpdate: "/card-category-update/:id",
   cardCreate: "/card-create",
   cardUpdate: "/card-update/:id",
+  socialLinkCreate: "/social-link-create",
+  socialLinkUpdate: "/social-link-update/:id",
 } as const;

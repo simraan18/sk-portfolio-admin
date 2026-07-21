@@ -10,7 +10,7 @@ import {
   WalletCards,
 } from "lucide-react";
 
-export const sidePanelKeys = ["home", "entity"];
+export const sidePanelKeys = ["home", "entity", "setting"];
 
 export const sidePanel: ISidebar = {
   home: {
@@ -58,5 +58,9 @@ export const sidePanel: ISidebar = {
         icon: MessageCircle,
       },
     ],
+  },
+  setting: {
+    label: "Setting",
+    navigations: [],
   },
 };

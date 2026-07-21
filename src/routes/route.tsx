@@ -37,6 +37,16 @@ const CardListPage = lazy(() => import("@/page/Card/CardListPage"));
 const CardCreatePage = lazy(() => import("@/page/Card/CardCreatePage"));
 const CardUpdatePage = lazy(() => import("@/page/Card/CardUpdatePage"));
 
+const SocialLinkListPage = lazy(
+  () => import("@/page/SocialLink/SocialLinkListPage"),
+);
+const SocialLinkCreatePage = lazy(
+  () => import("@/page/SocialLink/SocialLinkCreatePage"),
+);
+const SocialLinkUpdatePage = lazy(
+  () => import("@/page/SocialLink/SocialLinkUpdatePage"),
+);
+
 export const router = createBrowserRouter([
   {
     Component: LoginPage,
@@ -58,6 +68,9 @@ export const router = createBrowserRouter([
       { path: routePath.card, Component: CardListPage },
       { path: routePath.cardCreate, Component: CardCreatePage },
       { path: routePath.cardUpdate, Component: CardUpdatePage },
+      { path: routePath.socialLinks, Component: SocialLinkListPage },
+      { path: routePath.socialLinkCreate, Component: SocialLinkCreatePage },
+      { path: routePath.socialLinkUpdate, Component: SocialLinkUpdatePage },
     ],
     errorElement: <ErrorPage />,
   },

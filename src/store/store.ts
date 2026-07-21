@@ -17,6 +17,7 @@ import { authApi } from "./service/authApi";
 import { experienceApi } from "./service/experienceApi";
 import { cardCategoryApi } from "./service/cardCategoryApi";
 import { cardApi } from "./service/cardApi";
+import { socialLinkApi } from "./service/socialLinkApi";
 
 const persistConfig = {
   key: "root",
@@ -30,6 +31,7 @@ const rootReducer = combineReducers({
   [experienceApi.reducerPath]: experienceApi.reducer,
   [cardCategoryApi.reducerPath]: cardCategoryApi.reducer,
   [cardApi.reducerPath]: cardApi.reducer,
+  [socialLinkApi.reducerPath]: socialLinkApi.reducer,
   auth: authSlice.reducer,
 });
 
@@ -48,6 +50,7 @@ export const store = configureStore({
       experienceApi.middleware,
       cardCategoryApi.middleware,
       cardApi.middleware,
+      socialLinkApi.middleware,
     ),
 });
 
