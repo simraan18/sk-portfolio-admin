@@ -9,7 +9,7 @@ const Toolbar = () => {
   return (
     <div className="grid grid-cols-[1fr_auto] bg-surface border-b border-surface-border px-5 py-3">
       <div className="flex w-full items-center gap-4">
-        <LeftNavigationPanel navigations={sidePanel} />
+        {/* <LeftNavigationPanel navigations={sidePanel} /> */}
         <Link to={routePath.home}>
           <h1 className="font-semibold text-lg tracking-widest">
             SK Portfolio CMS
