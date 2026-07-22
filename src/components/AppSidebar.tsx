@@ -13,11 +13,7 @@ import {
 } from "./ui/sidebar";
 
 import AppLogo from "@/assets/AppLogo.png";
-import {
-  authApi,
-  useGetUserQuery,
-  useSignOutMutation,
-} from "@/store/service/authApi";
+import { useGetUserQuery, useSignOutMutation } from "@/store/service/authApi";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,17 +25,13 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Link, useNavigate } from "react-router";
 import { routePath } from "@/routes/route-path";
 import { apiError } from "@/utils";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { useAppDispatch } from "@/store/hooks";
 import { setAuthState, setToken } from "@/store/slice/auth-slice";
 import type { ISidebar } from "@/vite-env";
 import { sidePanelKeys } from "@/routes/navigation";
 
 const AppSidebar = ({ sidePanel }: { sidePanel: ISidebar }) => {
-  const selectUser = authApi.endpoints.getUser.select();
-  const { data: userCacheData } = useAppSelector(selectUser);
-  const { data: userData } = useGetUserQuery(undefined, {
-    skip: !!userCacheData?.response,
-  });
+  const { data: userData } = useGetUserQuery();
 
   const [signOut] = useSignOutMutation();
 
@@ -57,7 +49,7 @@ const AppSidebar = ({ sidePanel }: { sidePanel: ISidebar }) => {
     }
   };
 
-  const user = userCacheData?.response || userData?.response;
+  const user = userData?.response;
 
   return (
     <Sidebar variant="sidebar">

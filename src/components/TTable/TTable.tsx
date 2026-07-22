@@ -3,6 +3,7 @@ import {
   flexRender,
   getCoreRowModel,
   useReactTable,
+  getPaginationRowModel,
   type TableOptions,
 } from "@tanstack/react-table";
 import {
@@ -17,6 +18,7 @@ import { buildCustomTableColumns } from "./BuildCustomColumns";
 import type { routePath } from "@/routes/route-path";
 import { Button } from "../ui/button";
 import { RotateCcw } from "lucide-react";
+import TPagination from "./TPagination";
 
 interface TTableProps<T> extends Omit<TableOptions<T>, "getCoreRowModel"> {
   className?: string;
@@ -41,6 +43,13 @@ const TTable = <T extends Object>({
       .addActionBtns(updatePath, deleteUrl)
       .build(),
     getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    initialState: {
+      pagination: {
+        pageIndex: 0,
+        pageSize: 10,
+      },
+    },
     getRowId(originalRow) {
       return (originalRow as any).id;
     },
@@ -110,6 +119,7 @@ const TTable = <T extends Object>({
           </TableBody>
         </Table>
       </div>
+      <TPagination table={table} />
     </>
   );
 };

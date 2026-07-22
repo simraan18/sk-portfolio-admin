@@ -218,7 +218,7 @@ export const ProfileFormFields = (
       render={({ field, fieldState }) => (
         <Field data-invalid={fieldState.invalid}>
           <FieldLabel htmlFor="resumeUrl">Resume URL</FieldLabel>
-          <Input
+          <Textarea
             {...field}
             id="resumeUrl"
             aria-invalid={fieldState.invalid}
